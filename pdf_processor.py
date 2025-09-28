@@ -34,7 +34,7 @@ class PDFProcessor:
                     # Convert page to image
                     global Zoom
                     mat = fitz.Matrix(Zoom, Zoom)  # 2x zoom for better quality
-                    pix = page.get_pixmap(matrix=mat)
+                    pix = page.get_pixmap(dpi=300)
                     img_data = pix.tobytes("png")
                     
                     # Process image (invert colors if requested)

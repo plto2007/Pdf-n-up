@@ -8,6 +8,8 @@ from reportlab.lib.pagesizes import landscape, A4
 from reportlab.lib.utils import ImageReader
 import tempfile
 
+Zoom = 4.0
+
 class PDFProcessor:
     def __init__(self):
         self.temp_dir = tempfile.gettempdir()
@@ -30,7 +32,8 @@ class PDFProcessor:
                     page = doc.load_page(page_num)
                     
                     # Convert page to image
-                    mat = fitz.Matrix(3.0, 3.0)  # 2x zoom for better quality
+                    global Zoom
+                    mat = fitz.Matrix(Zoom, Zoom)  # 2x zoom for better quality
                     pix = page.get_pixmap(matrix=mat)
                     img_data = pix.tobytes("png")
                     

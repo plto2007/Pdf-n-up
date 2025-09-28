@@ -30,7 +30,7 @@ class PDFProcessor:
                     page = doc.load_page(page_num)
                     
                     # Convert page to image
-                    mat = fitz.Matrix(2.0, 2.0)  # 2x zoom for better quality
+                    mat = fitz.Matrix(3.0, 3.0)  # 2x zoom for better quality
                     pix = page.get_pixmap(matrix=mat)
                     img_data = pix.tobytes("png")
                     
